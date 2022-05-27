@@ -1,20 +1,66 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { createStore, combineReducers } from 'redux';
+import { Provider } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { LogBox } from "react-native";
+
+import * as Font from "expo-font";
+import * as SplashScreen from "expo-splash-screen";
+
+import productsReducer from "./store/reducers/products";
+import cartReducer from "./store/reducers/cart";
+import orderReducer from "./store/reducers/orders";
+import ShopNavigator from './navigation/ShopNavigator';
+
+const rootReducer = combineReducers({
+  products: productsReducer,
+  cart: cartReducer,
+  orders: orderReducer,
+});
+
+const store = createStore(rootReducer);
 
 export default function App() {
+  const [appIsReady, setAppIsReady] = useState(false);
+
+
+  useEffect(() => {
+    LogBox.ignoreLogs(["EventEmitter.removeListener"]);
+
+    async function hideLoading() {
+      return await SplashScreen.hideAsync();
+    }
+
+    async function prepare() {
+      try {
+        await SplashScreen.preventAutoHideAsync();
+        // Pre-load fonts, make any API calls you need to do here
+        await Font.loadAsync({
+          "open-sans": require("./assets/fonts/OpenSans-Regular.ttf"),
+          "open-sans-bold": require("./assets/fonts/OpenSans-Bold.ttf"),
+        });
+      } catch (e) {
+        console.warn(e);
+      } finally {
+        setAppIsReady(true);
+      }
+    }
+
+    const result = prepare();
+    result.then(() => {
+      const isHide = hideLoading();
+      isHide.then(() => {
+        setAppIsReady(true);
+      });
+    });
+  });
+
+  if (!appIsReady) {
+    return null;
+  }
+  
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Provider store={store}>
+      <ShopNavigator />
+    </Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
