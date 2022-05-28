@@ -38,6 +38,9 @@ export default function App() {
           "open-sans": require("./assets/fonts/OpenSans-Regular.ttf"),
           "open-sans-bold": require("./assets/fonts/OpenSans-Bold.ttf"),
         });
+
+        await new Promise((resolve) => setTimeout(resolve, 2000));
+        
       } catch (e) {
         console.warn(e);
       } finally {
