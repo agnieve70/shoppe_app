@@ -3,7 +3,7 @@ import {View, Text, Image, StyleSheet, TouchableOpacity, TouchableNativeFeedback
 import { Platform } from 'react-native';
 
 const ProductItem = (props) => {
-
+  
     let TouchableComp = TouchableOpacity;
 
     if((Platform.OS === 'android' || Platform.OS ==='web') && Platform.Version >= 21){
@@ -17,7 +17,7 @@ const ProductItem = (props) => {
               <Image style={styles.image} source={{ uri: props.image }} />
               <View style={styles.details}>
                 <Text style={styles.title}>{props.title}</Text>
-                <Text style={styles.price}>${props.price.toFixed(2)}</Text>
+                <Text style={styles.price}>Php. {props.price ? props.price.toFixed(2) : 1.0}</Text>
               </View>
               <View style={styles.actions}>
                 {props.children}

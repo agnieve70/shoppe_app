@@ -10,7 +10,9 @@ const OrderItem = (props) => {
   return (
     <View style={styles.orderItems}>
       <View style={styles.summary}>
-        <Text style={styles.totalAmount}>${props.amount.toFixed(2)}</Text>
+        <Text style={styles.totalAmount}>
+          Php. {props.amount ? props.amount.toFixed(2) : 0.0}
+        </Text>
         <Text style={styles.date}>{props.date}</Text>
       </View>
       <Button

@@ -23,11 +23,17 @@ const ProductDetailScreen = (props) => {
     <ScrollView>
       <Image style={styles.image} source={{ uri: selectedProduct.imageUrl }} />
       <View style={styles.actions}>
-        <Button color={Colors.primary} title="Add to Cart" onPress={() => {
-          dispatch(cartActions.addToCart(selectedProduct));
-        }} />
+        <Button
+          color={Colors.primary}
+          title="Add to Cart"
+          onPress={() => {
+            dispatch(cartActions.addToCart(selectedProduct));
+          }}
+        />
       </View>
-      <Text style={styles.price}>${selectedProduct.price.toFixed(2)}</Text>
+      <Text style={styles.price}>
+        Php. {selectedProduct.price ? selectedProduct.price.toFixed(2) : 1.0}
+      </Text>
       <Text style={styles.description}>{selectedProduct.description}</Text>
     </ScrollView>
   );

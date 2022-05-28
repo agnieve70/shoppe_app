@@ -26,7 +26,9 @@ const CartItem = (props) => {
         <Text style={styles.mainText}>{props.title}</Text>
       </View>
       <View style={styles.itemData}>
-        <Text style={styles.mainText}>${props.amount.toFixed(2)}</Text>
+        <Text style={styles.mainText}>
+          Php. {props.amount ? props.amount.toFixed(2) : 0.0}
+        </Text>
         {props.deletable && (
           <TouchableComp onPress={props.onRemove} style={styles.deleteButton}>
             <Ionicons

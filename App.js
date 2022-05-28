@@ -1,9 +1,10 @@
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import React, { useEffect, useState } from 'react';
 import { LogBox } from "react-native";
 
 import * as Font from "expo-font";
+import ReduxThunk from 'redux-thunk';
 import * as SplashScreen from "expo-splash-screen";
 
 import productsReducer from "./store/reducers/products";
@@ -17,11 +18,10 @@ const rootReducer = combineReducers({
   orders: orderReducer,
 });
 
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
 
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
-
 
   useEffect(() => {
     LogBox.ignoreLogs(["EventEmitter.removeListener"]);

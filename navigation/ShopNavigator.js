@@ -3,7 +3,6 @@ import { createStackNavigator } from "react-navigation-stack";
 import { createAppContainer } from "react-navigation";
 import { createDrawerNavigator } from "react-navigation-drawer";
 
-import colors from "../constants/Colors";
 import { Platform } from "react-native";
 
 import ProductOverviewScreen from "../screens/shop/ProductsOverviewScreen";
@@ -12,19 +11,22 @@ import CartScreen from "../screens/shop/CartScreen";
 import UserProductsScreen from '../screens/user/UserProductsScreen';
 import EditProductScreen from '../screens/user/EditProductScreen';
 import OrderScreen from "../screens/shop/OrderScreen";
-import { Colors } from "react-native/Libraries/NewAppScreen";
+import Colors from "../constants/Colors";
+
 import { Ionicons } from "@expo/vector-icons";
 
 const defaultNavOptions = {
   headerStyle: {
     backgroundColor:
-      Platform.OS === "android" || Platform.OS === "web" ? Colors.primary : "",
+      Platform.OS === "android" || Platform.OS === "web" ? Colors.primary :  Colors.primary,
   },
   headerTitleStyle: {
     fontFamily: "open-sans-bold",
   },
   headerTintColor:
-    Platform.OS === "android" || Platform.OS === "web" ? "#fff" : Colors.priar,
+    Platform.OS === "android" || Platform.OS === "web"
+      ? "#fff"
+      : Colors.primary,
 };
 
 const ProductsNavigator = createStackNavigator(
