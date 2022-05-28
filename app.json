@@ -4,10 +4,10 @@
     "slug": "shoppe_app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/shoppe_icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/shoppe_splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -22,15 +22,15 @@
     },
     "android": {
       "splash": {
-        "mdpi": "./assets/splash.png",
-        "hdpi": "./assets/splash.png",
-        "xhdpi": "./assets/splash.png",
-        "xxhdpi": "./assets/splash.png",
-        "xxxhdpi": "./assets/splash.png",
+        "mdpi": "./assets/shoppe_splash.png",
+        "hdpi": "./assets/shoppe_splash.png",
+        "xhdpi": "./assets/shoppe_splash.png",
+        "xxhdpi": "./assets/shoppe_splash.png",
+        "xxxhdpi": "./assets/shoppe_splash.png",
         "resizeMode": "cover"
       },
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/shoppe_icon.png",
         "backgroundColor": "#FFFFFF"
       },
       "package": "com.agnieve70.shoppe_app"

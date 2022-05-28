@@ -37,10 +37,14 @@ export default function App() {
         await Font.loadAsync({
           "open-sans": require("./assets/fonts/OpenSans-Regular.ttf"),
           "open-sans-bold": require("./assets/fonts/OpenSans-Bold.ttf"),
-        });
+        }).then( async () => {
+          await new Promise((resolve) => setTimeout(resolve, 1000)).then(()=> {
+            setAppIsReady(true);
+          })
+        })
 
-        await new Promise((resolve) => setTimeout(resolve, 2000));
         
+
       } catch (e) {
         console.warn(e);
       } finally {
